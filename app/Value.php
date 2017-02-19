@@ -46,7 +46,7 @@ class Value extends Model {
 		return self::getLast()->value;
 	}
 
-	public static function getTwoLasts()
+	public static function getLastTwo()
 	{
 		return self::orderBy('id', 'desc')->limit(2)->get();
 	}

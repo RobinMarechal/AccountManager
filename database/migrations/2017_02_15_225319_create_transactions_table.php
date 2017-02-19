@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration {
 			$table->string('to', 255)->nullable();
 			$table->string('from', 255)->nullable();
 			$table->boolean('credit_card')->index()->default(1);
+			$table->integer('transfert_id')->unsigned()->nullable();
 		});
 	}
 

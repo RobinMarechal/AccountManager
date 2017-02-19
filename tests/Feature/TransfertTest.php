@@ -16,6 +16,6 @@ class TransfertTest extends TestCase
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        //$this->assertTrue(true);
     }
 }

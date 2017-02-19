@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Transaction extends Model {
 
@@ -32,6 +33,21 @@ class Transaction extends Model {
 	public static function getLast()
 	{
 		return self::orderBy('id', 'desc')->first();
+	}
+
+	public static function createFromTransfert(Transfert $transfert)
+	{
+		if(isset($transfert[0]))
+		{
+			foreach($transfert as $t)
+				self::createFromTransfert($t);
+		}
+		else
+		{
+			$array = $transfert->toArray();
+			$array['transfert_id'] = $transfert->id;
+			self::add($array);
+		}
 	}
 
 }
